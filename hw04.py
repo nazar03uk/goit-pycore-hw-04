@@ -48,17 +48,21 @@ def parse_input(user_input: str) -> Tuple[str, List[str]]:
 
 def main():
     contacts: Dict[str, str] = {}
+
     commands: Dict[str, Callable[[List[str], Dict[str, str]], str]] = {
         "add": add_contact,
         "change": change_contact,
         "phone": show_phone,
         "all": lambda args, c: show_all(c),
     }
+
     print("Welcome to the assistant bot!")
+
     while True:
         try:
             user_input = input("Enter a command: ").strip()
             command, args = parse_input(user_input)
+
             if command in ["close", "exit"]:
                 print("Good bye!")
                 break
